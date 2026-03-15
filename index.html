@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My GitHub + VS Code Workflow</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: #24292e;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            opacity: 0.9;
+            font-size: 0.95em;
+        }
+
+        .workflow {
+            padding: 30px;
+        }
+
+        .step {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding: 20px;
+            background: #f6f8fa;
+            border-radius: 8px;
+            border-left: 4px solid #0366d6;
+            transition: all 0.3s ease;
+        }
+
+        .step:hover {
+            transform: translateX(5px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .step-number {
+            background: #0366d6;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-title {
+            font-weight: 600;
+            color: #24292e;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+
+        .step-desc {
+            color: #586069;
+            font-size: 0.95em;
+            margin-bottom: 10px;
+        }
+
+        code {
+            background: #24292e;
+            color: #e1e4e8;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+            font-size: 0.9em;
+            display: inline-block;
+            margin: 4px 0;
+        }
+
+        .note {
+            background: #fff8c5;
+            border-left: 4px solid #f9c513;
+            padding: 12px;
+            border-radius: 6px;
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: #735c0f;
+        }
+
+        .github-action {
+            border-left-color: #6f42c1;
+        }
+        .github-action .step-number {
+            background: #6f42c1;
+        }
+
+        .vscode-action {
+            border-left-color: #007acc;
+        }
+        .vscode-action .step-number {
+            background: #007acc;
+        }
+
+        .git-command {
+            border-left-color: #28a745;
+        }
+        .git-command .step-number {
+            background: #28a745;
+        }
+
+        .checkbox-wrapper {
+            margin-top: 10px;
+        }
+
+        input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            margin-right: 8px;
+        }
+
+        .completed .step-title {
+            text-decoration: line-through;
+            opacity: 0.6;
+        }
+
+        .completed {
+            opacity: 0.7;
+            background: #e1e4e8;
+        }
+
+        @media print {
+            body { background: white; }
+            .container { box-shadow: none; }
+            .step { break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 GitHub + VS Code Workflow</h1>
+            <p class="subtitle">My personal step-by-step guide to creating repos</p>
+        </header>
+
+        <div class="workflow">
+            
+            <!-- Step 1 -->
+            <div class="step github-action">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <div class="step-title">Create GitHub Repository</div>
+                    <div class="step-desc">Go to GitHub website and create a new repository</div>
+                    <div class="checkbox-wrapper">
+                        <label><input type="checkbox"> Done</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="step vscode-action">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <div class="step-title">Setup Local Folder</div>
+                    <div class="step-desc">Create folder on computer and open in VS Code</div>
+                    <div class="checkbox-wrapper">
+                        <label><input type="checkbox"> Done</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="step git-command">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <div class="step-title">Initialize Git</div>
+                    <div class="step-desc">While in that folder (assuming git is setup and logged in through CLI)</div>
+                    <code>git init</code>
+                    <div class="checkbox-wrapper">
+                        <label><input type="checkbox"> Done</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="step vscode-action">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <div class="step-title">Create HTML File</div>
+                    <div class="step-desc">Make a file in VS Code called index.html</div>
+                    <div class="checkbox-wrapper">
+                        <label><input type="checkbox"> Done</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 5 -->
+            <div class="step vscode-action">
+                <div class="step-number">5</div>
+                <div class="step-content">
+                    <div class="step-title">Add Your Code</div>
+                    <div class="step-desc">Put your HTML code in it and add style.css and index.js if that is also part of it</div>
+                    <div class="checkbox-wrapper">
+                        <label><input type="checkbox"> Done</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 6 -->
+            <div class="step git-command">
+                <div class="step-number">6</div>
+                <div class="step-content">
+                    <div class="step-title">Check Status (First Time)</div>
+                    <div class="step-desc">See what files are not added (they will show as untracked)</div>
+                    <code>git status</code>
+                    <div class="checkbox-wrapper">
+                        <label><input type="checkbox"> Done</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 7 -->
+            <div class="step git-command">
+                <div class="step-number">7</div>
+                <div class="step-content">
+                    <div class="step-title">Add Files</div>
+                    <div class="step-desc">Add all files or specific ones</div>
+                    <code>git add .</code>
+                    <div style="margin: 5px 0; color: #586069; font-size: 0.9em;">OR</div>
+                    <code>git add filename.html</code>
+                    <div class="checkbox-wrapper">
+                        <label><input type="checkbox"> Done</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 8 -->
+            <div class="step git-command">
+                <div class="step-number">8</div>
+                <div class="step-content">
+                    <div class="step-title">Verify Status</div>
+                    <div class="step-desc">Check if files were added. If not added they will be in red, if added they will be in green</div>
+                    <code>git status</code>
+                    <div class="checkbox-wrapper">
+                        <label><input type="checkbox"> Done</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 9 -->
+            <div class="step git-command">
+                <div class="step-number">9</div>
+                <div class="step-content">
+                    <div class="step-title">Commit Changes</div>
+                    <div class="step-desc">Save your changes with a description</div>
+                    <code>git commit -m "Your description here"</code>
+                    <div class="checkbox-wrapper">
+                        <label><input type="checkbox"> Done</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 10 -->
+            <div class="step git-command">
+                <div class="step-number">10</div>
+                <div class="step-content">
+                    <div class="step-title">First Push Attempt</div>
+                    <div class="step-desc">Try pushing (this may fail without remote, that's okay)</div>
+                    <code>git push</code>
+                    <div class="checkbox-wrapper">
+                        <label><input type="checkbox"> Done</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 11 -->
+            <div class="step git-command">
+                <div class="step-number">11</div>
+                <div class="step-content">
+                    <div class="step-title">Connect to GitHub</div>
+                    <div class="step-desc">From GitHub webpage for new repo, copy and type the remote add origin command</div>
+                    <code>git remote add origin https://github.com/YOURUSERNAME/REPO-NAME.git</code>
+                    <div class="checkbox-wrapper">
+                        <label><input type="checkbox"> Done</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 12 -->
+            <div class="step git-command">
+                <div class="step-number">12</div>
+                <div class="step-content">
+                    <div class="step-title">Set Upstream (If Fatal Error)</div>
+                    <div class="step-desc">If met with a fatal message, set the upstream branch</div>
+                    <code>git push --set-upstream origin main</code>
+                    <div class="note">
+                        💡 This only needs to be done once per repository. After this, regular <code>git push</code> will work.
+                    </div>
+                    <div class="checkbox-wrapper">
+                        <label><input type="checkbox"> Done (if needed)</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 13 -->
+            <div class="step git-command">
+                <div class="step-number">13</div>
+                <div class="step-content">
+                    <div class="step-title">Final Push</div>
+                    <div class="step-desc">Push again - should be met with "Everything is up to date" message</div>
+                    <code>git push</code>
+                    <div class="checkbox-wrapper">
+                        <label><input type="checkbox"> Done</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 14 -->
+            <div class="step github-action">
+                <div class="step-number">14</div>
+                <div class="step-content">
+                    <div class="step-title">Verify on GitHub</div>
+                    <div class="step-desc">Refresh GitHub webpage and see if contents appear</div>
+                    <div class="checkbox-wrapper">
+                        <label><input type="checkbox"> Done</label>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // Add strikethrough effect when checking boxes
+        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const step = this.closest('.step');
+                if (this.checked) {
+                    step.classList.add('completed');
+                } else {
+                    step.classList.remove('completed');
+                }
+            });
+        });
+
+        // Double-click code to select (easy copying)
+        document.querySelectorAll('code').forEach(code => {
+            code.style.cursor = 'pointer';
+            code.title = 'Double-click to select all';
+            code.addEventListener('dblclick', function() {
+                const range = document.createRange();
+                range.selectNode(this);
+                window.getSelection().removeAllRanges();
+                window.getSelection().addRange(range);
+            });
+        });
+    </script>
+</body>
+</html>
