@@ -45,6 +45,35 @@
             font-size: 0.95em;
         }
 
+        .section-header {
+            background: #f6f8fa;
+            padding: 20px 30px;
+            border-bottom: 2px solid #e1e4e8;
+            border-top: 2px solid #e1e4e8;
+            margin-top: 30px;
+        }
+
+        .section-header:first-of-type {
+            margin-top: 0;
+            border-top: none;
+        }
+
+        .section-title {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #24292e;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-desc {
+            color: #586069;
+            font-size: 0.9em;
+            margin-top: 5px;
+            margin-left: 34px;
+        }
+
         .workflow {
             padding: 30px;
         }
@@ -116,6 +145,16 @@
             color: #735c0f;
         }
 
+        .tip {
+            background: #ddf4ff;
+            border-left: 4px solid #54aeff;
+            padding: 12px;
+            border-radius: 6px;
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: #0969da;
+        }
+
         .github-action {
             border-left-color: #6f42c1;
         }
@@ -169,11 +208,17 @@
     <div class="container">
         <header>
             <h1>🚀 GitHub + VS Code Workflow</h1>
-            <p class="subtitle">My personal step-by-step guide to creating repos</p>
+            <p class="subtitle">My personal step-by-step guide to creating repos and managing changes</p>
         </header>
 
         <div class="workflow">
             
+            <!-- INITIAL SETUP SECTION -->
+            <div class="section-header">
+                <div class="section-title">📦 Part 1: Initial Repository Setup</div>
+                <div class="section-desc">Use this when creating a brand new repository</div>
+            </div>
+
             <!-- Step 1 -->
             <div class="step github-action">
                 <div class="step-number">1</div>
@@ -350,6 +395,110 @@
                 <div class="step-content">
                     <div class="step-title">Verify on GitHub</div>
                     <div class="step-desc">Refresh GitHub webpage and see if contents appear</div>
+                    <div class="checkbox-wrapper">
+                        <label><input type="checkbox"> Done</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ONGOING CHANGES SECTION -->
+            <div class="section-header">
+                <div class="section-title">📝 Part 2: Making Changes to Existing Repo</div>
+                <div class="section-desc">Use this when adding new files or updating existing ones</div>
+            </div>
+
+            <!-- Change Step 1 -->
+            <div class="step vscode-action">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <div class="step-title">Make Changes</div>
+                    <div class="step-desc">In VS Code, add a new file or make changes and make sure to save them</div>
+                    <div class="tip">
+                        💡 Tip: Use Ctrl+S (Windows) or Cmd+S (Mac) to save files
+                    </div>
+                    <div class="checkbox-wrapper">
+                        <label><input type="checkbox"> Done</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Change Step 2 -->
+            <div class="step git-command">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <div class="step-title">Check Differences</div>
+                    <div class="step-desc">Type git status to check what is not the same on the GitHub repo - it will appear in red</div>
+                    <code>git status</code>
+                    <div class="checkbox-wrapper">
+                        <label><input type="checkbox"> Done</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Change Step 3 -->
+            <div class="step git-command">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <div class="step-title">Stage Changes</div>
+                    <div class="step-desc">Add specific file or all saved changes</div>
+                    <code>git add filename.extension</code>
+                    <div style="margin: 5px 0; color: #586069; font-size: 0.9em;">OR add everything:</div>
+                    <code>git add .</code>
+                    <div class="checkbox-wrapper">
+                        <label><input type="checkbox"> Done</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Change Step 4 -->
+            <div class="step git-command">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <div class="step-title">Verify Staging</div>
+                    <div class="step-desc">Type git status again to check to see if they were added</div>
+                    <code>git status</code>
+                    <div class="checkbox-wrapper">
+                        <label><input type="checkbox"> Done</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Change Step 5 -->
+            <div class="step git-command">
+                <div class="step-number">5</div>
+                <div class="step-content">
+                    <div class="step-title">Commit Changes</div>
+                    <div class="step-desc">Add description for your changes</div>
+                    <code>git commit -m "Description of changes"</code>
+                    <div class="note">
+                        ⚠️ <strong>Note:</strong> If you do this after adding all new files with <code>git add .</code>, all of their descriptions will be the same as you put in this commit message. If you want separate descriptions for different files, commit them individually.
+                    </div>
+                    <div class="checkbox-wrapper">
+                        <label><input type="checkbox"> Done</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Change Step 6 -->
+            <div class="step git-command">
+                <div class="step-number">6</div>
+                <div class="step-content">
+                    <div class="step-title">Final Status Check</div>
+                    <div class="step-desc">Type git status again to check (should show nothing to commit or working tree clean)</div>
+                    <code>git status</code>
+                    <div class="checkbox-wrapper">
+                        <label><input type="checkbox"> Done</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Change Step 7 -->
+            <div class="step git-command">
+                <div class="step-number">7</div>
+                <div class="step-content">
+                    <div class="step-title">Push to GitHub</div>
+                    <div class="step-desc">Push finally to the repo</div>
+                    <code>git push</code>
                     <div class="checkbox-wrapper">
                         <label><input type="checkbox"> Done</label>
                     </div>
